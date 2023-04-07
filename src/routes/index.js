@@ -3,12 +3,12 @@
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Upload from '~/pages/Upload';
-import { OnlyHeader } from '~/components/Layout';
+import { HeaderOnly } from '~/components/Layout';
 // publicRotes
 const publicRotes = [
   { path: '/', component: Home },
   { path: '/following', component: Following, layout: null },
-  { path: '/upload', component: Upload, layout: OnlyHeader },
+  { path: '/upload', component: Upload, layout: HeaderOnly },
 ];
 
 // privateRotes
