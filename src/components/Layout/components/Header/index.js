@@ -11,6 +11,7 @@ import {
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
+import Button from '~/components/Button';
 import { Wrapper as PopperWraper } from '~/components/Popper';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -20,7 +21,7 @@ function Header() {
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     setTimeout(() => {
-      setSearchResult([1, 2, 3]);
+      setSearchResult([]);
     }, 0);
   }, []);
   return (
@@ -55,15 +56,16 @@ function Header() {
           </div>
         </Tippy>
         <div className={clsx(styles.actions)}>
-          <div>
-            <a href="/upload">
-              <div className={clsx(styles.upload)}>
-                <FontAwesomeIcon className={clsx(styles.uploadIcon)} icon={faPlus} />
-                <span className={clsx(styles.uploadSpan)}>Tải lên</span>
-              </div>
-            </a>
-          </div>
-          <button className={clsx(styles.loginBtn)}>Đăng nhập</button>
+          <Button
+            outline
+            secondary
+            to="/upload"
+            className={clsx(styles.upload)}
+            leftIcon={<FontAwesomeIcon className={clsx(styles.uploadIcon)} icon={faPlus} />}
+          >
+            <span className={clsx(styles.uploadSpan)}>Tải lên</span>
+          </Button>
+          <Button primary>Đăng nhập</Button>
           <FontAwesomeIcon className={clsx(styles.moreMenuIcon)} icon={faEllipsisVertical} />
         </div>
       </div>

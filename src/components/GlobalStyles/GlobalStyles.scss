@@ -31,7 +31,7 @@ body {
 
 a[href] {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
 }
 
 button,
