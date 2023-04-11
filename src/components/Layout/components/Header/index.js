@@ -9,13 +9,36 @@ import {
   faMagnifyingGlass,
   faEllipsisVertical,
   faPlus,
+  faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faKeyboard, faMoon } from '@fortawesome/free-regular-svg-icons';
 
+import MenuPopper from '~/components/Popper/MenuPopper';
 import Button from '~/components/Button';
 import { Wrapper as PopperWraper } from '~/components/Popper';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
+
+const MENU_ITEMS = [
+  {
+    icon: <FontAwesomeIcon icon={faGlobe} />,
+    title: 'Tiếng Việt',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: 'Phản hồi và trợ giúp',
+    to: '/feedback',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faKeyboard} />,
+    title: 'Phím tắt trên bàn phím',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faMoon} />,
+    title: 'Chế độ tối',
+  },
+];
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
@@ -66,7 +89,11 @@ function Header() {
             <span className={clsx(styles.uploadSpan)}>Tải lên</span>
           </Button>
           <Button primary>Đăng nhập</Button>
-          <FontAwesomeIcon className={clsx(styles.moreMenuIcon)} icon={faEllipsisVertical} />
+          <MenuPopper items={MENU_ITEMS}>
+            <button className={clsx(styles.moreMenuIcon)}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </MenuPopper>
         </div>
       </div>
     </header>

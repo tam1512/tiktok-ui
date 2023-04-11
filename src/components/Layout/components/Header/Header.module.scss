@@ -16,6 +16,7 @@
 .inner {
   height: 100%;
   width: var(--default-layout-width);
+  max-width: var(--max-width-layout);
   padding-left: 16px;
   padding-right: 24px;
   display: flex;
@@ -115,10 +116,6 @@
   color: rgba(22, 24, 35, 1) !important;
   padding: 0 17px;
   border-radius: 0;
-
-  &:hover {
-    background-color: var(--grey-hover);
-  }
 }
 
 .uploadIcon {
@@ -133,8 +130,10 @@
   margin-left: 16px;
 }
 .moreMenuIcon {
+  background-color: transparent;
   width: 20px;
   height: 20px;
+  font-size: 18px;
   margin-left: 16px;
   padding: 0 4px;
   cursor: pointer;
