@@ -17,7 +17,7 @@
   height: 100%;
   width: var(--default-layout-width);
   max-width: var(--max-width-layout);
-  padding-left: 16px;
+  padding-left: 20px;
   padding-right: 24px;
   display: flex;
   align-items: center;
@@ -116,14 +116,16 @@
   color: rgba(22, 24, 35, 1) !important;
   padding: 0 17px;
   border-radius: 0;
+  align-self: center;
 }
 
 .uploadIcon {
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 600;
 }
 .uploadSpan {
   font-size: 16px;
+  font-weight: 600;
   line-height: 24px;
 }
 .loginBtnHeader {

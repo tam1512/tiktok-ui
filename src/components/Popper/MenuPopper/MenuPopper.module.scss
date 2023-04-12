@@ -1,6 +1,8 @@
+// MenuPopper
 .menuList {
   width: 224px;
 }
+// MenuItem
 .menuItem {
   justify-content: flex-start;
   width: 100%;
@@ -16,4 +18,24 @@
   &:hover {
     background-color: var(--grey-hover);
   }
+}
+
+// Header
+.header {
+  height: 50px;
+  width: 100%;
+  position: relative;
+  margin-top: -8px;
+}
+.backBtn {
+  width: 50px;
+  height: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+.headerTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

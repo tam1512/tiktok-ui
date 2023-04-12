@@ -55,7 +55,6 @@ function Button({
 
   return (
     <Comp className={classes} {...props}>
-      {console.log({ ...props })}
       {leftIcon && <span className={clsx(styles.icon)}>{leftIcon}</span>}
       <span className={clsx(styles.title)}>{children}</span>
     </Comp>

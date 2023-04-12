@@ -24,6 +24,21 @@ const MENU_ITEMS = [
   {
     icon: <FontAwesomeIcon icon={faGlobe} />,
     title: 'Tiếng Việt',
+    children: {
+      title: 'Ngôn ngữ',
+      data: [
+        {
+          type: 'language',
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          type: 'language',
+          code: 'en',
+          title: 'English',
+        },
+      ],
+    },
   },
   {
     icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -47,6 +62,11 @@ function Header() {
       setSearchResult([]);
     }, 0);
   }, []);
+
+  // Handle logic
+  const handleMenuChange = (item) => {
+    console.log(item);
+  };
   return (
     <header className={clsx(styles.wrapper)}>
       <div className={clsx(styles.inner)}>
@@ -89,7 +109,7 @@ function Header() {
             <span className={clsx(styles.uploadSpan)}>Tải lên</span>
           </Button>
           <Button primary>Đăng nhập</Button>
-          <MenuPopper items={MENU_ITEMS}>
+          <MenuPopper items={MENU_ITEMS} onChange={handleMenuChange}>
             <button className={clsx(styles.moreMenuIcon)}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
