@@ -40,8 +40,30 @@ input,
 [tabindex] {
   outline: none;
   border: none;
+  color: var(--text-color);
 }
 
 .w-full {
   width: 100%;
+}
+
+.tippy-content {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 8px;
+}
+
+.tippy-box {
+  border-radius: 8px;
+  background-color: rgba(84, 84, 84, 0.92);
+  color: rgb(255, 255, 255);
+}
+.tippy-arrow {
+  width: 16px;
+  height: 16px;
+  color: rgba(84, 84, 84, 0.92);
+}
+.tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+  top: -8px;
 }
