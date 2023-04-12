@@ -33,6 +33,7 @@ function MenuPopper({ children, items = [], onChange = defautFnc }) {
   };
   return (
     <Tippy
+      offset={[14, 8]}
       placement="bottom-end"
       interactive
       delay={[0, 1000]}
@@ -51,6 +52,7 @@ function MenuPopper({ children, items = [], onChange = defautFnc }) {
           </PopperWraper>
         </div>
       )}
+      onHide={() => setHistory((prev) => prev.slice(0, 1))} // Khi tippy ẩn trả về mảng phần tử đầu tiên
     >
       {children}
     </Tippy>

@@ -2,7 +2,9 @@
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import TippyHeadless from '@tippyjs/react/headless';
 import {
   faCircleXmark,
   faSpinner,
@@ -10,8 +12,18 @@ import {
   faEllipsisVertical,
   faPlus,
   faGlobe,
+  faCoins,
+  faGear,
+  faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCircleQuestion, faKeyboard, faMoon } from '@fortawesome/free-regular-svg-icons';
+import {
+  faCircleQuestion,
+  faKeyboard,
+  faMessage,
+  faMoon,
+  faPaperPlane,
+  faUser,
+} from '@fortawesome/free-regular-svg-icons';
 
 import MenuPopper from '~/components/Popper/MenuPopper';
 import Button from '~/components/Button';
@@ -57,6 +69,9 @@ const MENU_ITEMS = [
 
 function Header() {
   const [searchResult, setSearchResult] = useState([]);
+
+  const currentUser = true;
+
   useEffect(() => {
     setTimeout(() => {
       setSearchResult([]);
@@ -67,11 +82,37 @@ function Header() {
   const handleMenuChange = (item) => {
     console.log(item);
   };
+
+  const userMenu = [
+    {
+      icon: <FontAwesomeIcon icon={faUser} />,
+      title: 'Xem hồ sơ',
+      to: '/@linh',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCoins} />,
+      title: 'Nhận xu',
+      to: '/coin',
+    },
+    {
+      icon: <FontAwesomeIcon icon={faGear} />,
+      title: 'Cài đặt',
+      to: '/setting',
+    },
+    ...MENU_ITEMS,
+    {
+      icon: <FontAwesomeIcon icon={faSignOut} />,
+      title: 'Đăng xuất',
+      to: '/logout',
+      separate: true,
+    },
+  ];
+
   return (
     <header className={clsx(styles.wrapper)}>
       <div className={clsx(styles.inner)}>
         <img src={images.logo} alt="Tiktok"></img>
-        <Tippy
+        <TippyHeadless
           interactive
           visible={searchResult.length > 0}
           render={(attrs) => (
@@ -97,7 +138,8 @@ function Header() {
             </button>
             <div className={clsx(styles.inputBorder)}></div>
           </div>
-        </Tippy>
+        </TippyHeadless>
+
         <div className={clsx(styles.actions)}>
           <Button
             outline
@@ -108,11 +150,35 @@ function Header() {
           >
             <span className={clsx(styles.uploadSpan)}>Tải lên</span>
           </Button>
-          <Button primary>Đăng nhập</Button>
-          <MenuPopper items={MENU_ITEMS} onChange={handleMenuChange}>
-            <button className={clsx(styles.moreMenuIcon)}>
-              <FontAwesomeIcon icon={faEllipsisVertical} />
-            </button>
+          {currentUser ? (
+            <>
+              <Tippy placement="bottom" content="Tin nhắn" duration={[0, 200]}>
+                <button className={clsx(styles.actionBtn)}>
+                  <FontAwesomeIcon icon={faPaperPlane} />
+                </button>
+              </Tippy>
+              <Tippy placement="bottom" content="Hộp thư" duration={[0, 200]}>
+                <button className={clsx(styles.actionBtn)}>
+                  <FontAwesomeIcon icon={faMessage} />
+                </button>
+              </Tippy>
+            </>
+          ) : (
+            <Button primary>Đăng nhập</Button>
+          )}
+
+          <MenuPopper items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+            {currentUser ? (
+              <img
+                className={clsx(styles.avatar)}
+                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/afd8e4fc43d07f8093cfc5db261da27e~c5_100x100.jpeg?x-expires=1681495200&x-signature=5JtR9on51bdsUwN0AAKZkp%2BRmPY%3D"
+                alt="hoaa"
+              />
+            ) : (
+              <button className={clsx(styles.moreMenuIcon)}>
+                <FontAwesomeIcon icon={faEllipsisVertical} />
+              </button>
+            )}
           </MenuPopper>
         </div>
       </div>
