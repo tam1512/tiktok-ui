@@ -22,6 +22,10 @@
       background-color: var(--grey-hover);
     }
   }
+
+  .separate {
+    border-top: 1px solid var(--color-grey-border);
+  }
 }
 
 // Header
@@ -42,8 +46,4 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.separate {
-  border-top: 1px solid var(--color-grey-border);
 }

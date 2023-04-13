@@ -16,6 +16,7 @@ function Button({
   rightIcon,
   children,
   className,
+  svg,
   onClick,
   ...passProps
 }) {
@@ -51,6 +52,7 @@ function Button({
     [styles.disabled]: disabled,
     [styles.small]: small,
     [styles.large]: large,
+    [styles.svg]: svg,
   });
 
   return (

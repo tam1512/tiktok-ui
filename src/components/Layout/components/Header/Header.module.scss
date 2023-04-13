@@ -23,6 +23,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.logo {
+  min-width: 300px;
+}
+
 .search,
 .searchResult {
   width: 415px;
@@ -135,7 +140,7 @@
 .upload {
   border: 1px solid var(--color-grey-border);
   color: rgba(22, 24, 35, 1) !important;
-  padding: 0 17px;
+  padding: 0 16px;
   border-radius: 0;
   align-self: center;
 }
