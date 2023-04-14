@@ -1,20 +1,15 @@
 // Header được sài chung cho 2 layout (Default và Only), cách này giúp giải quyết vần đề trùng lặp code
-import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import TippyHeadless from '@tippyjs/react/headless';
-import { faSpinner, faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import MenuPopper from '~/components/Popper/MenuPopper';
 import Button from '~/components/Button';
-import { Wrapper as PopperWraper } from '~/components/Popper';
 import styles from './Header.module.scss';
-import AccountItem from '~/components/AccountItem';
 import { Logo } from '~/assets/logo';
 import {
-  ClearIcon,
   CoinIcon,
   FeedbackIcon,
   InboxIcon,
@@ -23,11 +18,11 @@ import {
   LogoutIcon,
   MessageIcon,
   MoonIcon,
-  SearchIcon,
   SettingIcon,
   UserIcon,
 } from '~/components/Icon';
 import Image from '~/components/Image';
+import Search from '~/components/Search';
 
 const MENU_ITEMS = [
   {
@@ -65,15 +60,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
-
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
 
   // Handle logic
   const handleMenuChange = (item) => {
@@ -111,33 +98,8 @@ function Header() {
         <Button svg to="/" className={clsx(styles.logo)}>
           <Logo />
         </Button>
-        <TippyHeadless
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={clsx(styles.searchResult)} tabIndex={-1} {...attrs}>
-              <PopperWraper>
-                <h4 className={styles.searchTitle}>Tài khoản</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWraper>
-            </div>
-          )}
-        >
-          <div className={clsx(styles.search)}>
-            <input placeholder="Tìm kiếm tài khoản và video" spellCheck={false} />
-            <button className={clsx(styles.clear)}>
-              <ClearIcon />
-            </button>
-            <FontAwesomeIcon className={clsx(styles.loading)} icon={faSpinner} />
-            <button className={clsx(styles.searchBtn)}>
-              <SearchIcon />
-            </button>
-            <div className={clsx(styles.inputBorder)}></div>
-          </div>
-        </TippyHeadless>
+        {/* search */}
+        <Search />
 
         <div className={clsx(styles.actions)}>
           <Button
