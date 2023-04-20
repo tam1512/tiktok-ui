@@ -22,7 +22,7 @@ import {
   UserIcon,
 } from '~/components/Icon';
 import Image from '~/components/Image';
-import Search from '~/components/Search';
+import Search from '~/components/Layout/components/Search';
 
 const MENU_ITEMS = [
   {

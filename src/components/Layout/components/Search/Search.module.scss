@@ -21,6 +21,7 @@
   background-color: rgba(22, 24, 35, 0.06);
   overflow: hidden;
   input {
+    flex: 1;
     font-size: 15px;
     line-height: 22px;
     font-weight: 400;
@@ -39,15 +40,26 @@
 .clear,
 .loading {
   display: flex;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: calc(var(--width-searchBtn));
-  margin: 0 12px;
+  align-items: center;
+  padding: 0 12px;
   font-size: 16px;
   color: var(--icon-color-grey);
   cursor: pointer;
 }
+
+.loading {
+  animation: pinner 0.3s ease-in-out infinite;
+}
+
+@keyframes pinner {
+  to {
+    transform: rotate(0);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
 .inputBorder {
   display: none;
   position: absolute;
