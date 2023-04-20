@@ -2,22 +2,21 @@ import clsx from 'clsx';
 import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-function AccountItem() {
+import { Link } from 'react-router-dom';
+
+import Image from '../Image';
+function AccountItem({ data }) {
   return (
-    <div className={clsx(styles.wrapper)}>
-      <img
-        className={clsx(styles.avatar)}
-        src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/afd8e4fc43d07f8093cfc5db261da27e~c5_100x100.jpeg?x-expires=1681495200&x-signature=5JtR9on51bdsUwN0AAKZkp%2BRmPY%3D"
-        alt="hoaaa"
-      />
+    <Link to={`/@${data.nickname}`} className={clsx(styles.wrapper)}>
+      <Image className={clsx(styles.avatar)} src={data.avatar} alt={data.nickname} />
       <div className={clsx(styles.info)}>
         <p className={clsx(styles.username)}>
-          linhbarbie
-          <FontAwesomeIcon className={clsx(styles.iconCheck)} icon={faCheckCircle} />
+          {data.full_name}
+          {data.tick && <FontAwesomeIcon className={clsx(styles.iconCheck)} icon={faCheckCircle} />}
         </p>
-        <p className={clsx(styles.nickname)}>Linh Barbie</p>
+        <p className={clsx(styles.nickname)}>{data.nickname}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
